@@ -1171,10 +1171,6 @@ set_library() {
     ;;
   libwebp)
     ENABLED_LIBRARIES[LIBRARY_LIBWEBP]=$2
-    ENABLED_LIBRARIES[LIBRARY_GIFLIB]=$2
-    ENABLED_LIBRARIES[LIBRARY_JPEG]=$2
-    set_library "tiff" $2
-    set_library "libpng" $2
     ;;
   libxml2)
     ENABLED_LIBRARIES[LIBRARY_LIBXML2]=$2
@@ -1461,6 +1457,7 @@ check_if_dependency_rebuilt() {
   case $1 in
   cpu-features)
     set_dependency_rebuilt_flag "libvpx"
+    set_dependency_rebuilt_flag "libwebp"
     set_dependency_rebuilt_flag "openh264"
     ;;
   expat)
@@ -1479,9 +1476,6 @@ check_if_dependency_rebuilt() {
     set_dependency_rebuilt_flag "libass"
     ;;
   giflib)
-    set_dependency_rebuilt_flag "libwebp"
-    set_dependency_rebuilt_flag "leptonica"
-    set_dependency_rebuilt_flag "tesseract"
     ;;
   gmp)
     set_dependency_rebuilt_flag "gnutls"
@@ -1492,7 +1486,6 @@ check_if_dependency_rebuilt() {
     ;;
   jpeg)
     set_dependency_rebuilt_flag "tiff"
-    set_dependency_rebuilt_flag "libwebp"
     set_dependency_rebuilt_flag "leptonica"
     set_dependency_rebuilt_flag "tesseract"
     ;;
@@ -1512,7 +1505,6 @@ check_if_dependency_rebuilt() {
     ;;
   libpng)
     set_dependency_rebuilt_flag "freetype"
-    set_dependency_rebuilt_flag "libwebp"
     set_dependency_rebuilt_flag "libass"
     set_dependency_rebuilt_flag "leptonica"
     set_dependency_rebuilt_flag "tesseract"
@@ -1542,7 +1534,6 @@ check_if_dependency_rebuilt() {
     set_dependency_rebuilt_flag "srt"
     ;;
   tiff)
-    set_dependency_rebuilt_flag "libwebp"
     set_dependency_rebuilt_flag "leptonica"
     set_dependency_rebuilt_flag "tesseract"
     ;;

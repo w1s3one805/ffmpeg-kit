@@ -38,6 +38,9 @@ enabled_library_list=()
 for library in {1..50}; do
   if [[ ${!library} -eq 1 ]]; then
     ENABLED_LIBRARY=$(get_library_name $((library - 1)))
+    if [ "${ENABLED_LIBRARY}" = "giflib" ] || [ "${ENABLED_LIBRARY}" = "jpeg" ] || [ "${ENABLED_LIBRARY}" = "libpng" ] || [ "${ENABLED_LIBRARY}" = "tiff" ]; then
+      continue
+    fi
     enabled_library_list+=(${ENABLED_LIBRARY})
 
     echo -e "INFO: Enabled library ${ENABLED_LIBRARY} will be built\n" 1>>"${BASEDIR}"/build.log 2>&1
@@ -91,9 +94,7 @@ while [ ${#enabled_library_list[@]} -gt $completed ]; do
       fi
       ;;
     libwebp)
-      if [[ $OK_giflib -eq 1 ]] && [[ $OK_jpeg -eq 1 ]] && [[ $OK_libpng -eq 1 ]] && [[ $OK_tiff -eq 1 ]]; then
-        run=1
-      fi
+      run=1
       ;;
     nettle)
       if [[ $OK_gmp -eq 1 ]]; then

@@ -514,7 +514,6 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --enable-pic \
   --enable-inline-asm \
   --enable-optimizations \
-  --enable-swscale \
   ${BUILD_LIBRARY_OPTIONS} \
   --enable-pthreads \
   --disable-v4l2-m2m \
@@ -548,6 +547,11 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --disable-nvenc \
   --disable-vaapi \
   --disable-vdpau \
+  --disable-everything \
+  --enable-decoder=libvpx_vp9 \
+  --enable-encoder=libwebp_anim \
+  --enable-muxer=webp \
+  --enable-protocol=file \
   ${CONFIGURE_POSTFIX} 1>>"${BASEDIR}"/build.log 2>&1
 
 if [[ $? -ne 0 ]]; then

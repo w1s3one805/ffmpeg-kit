@@ -66,9 +66,8 @@ esac
   --enable-pic \
   --enable-optimizations \
   --enable-better-hw-compatibility \
-  --enable-vp9-highbitdepth \
   ${ASM_OPTIONS} \
-  --enable-vp8 \
+  --disable-vp8 \
   --enable-vp9 \
   --enable-multithread \
   --enable-spatial-resampling \
