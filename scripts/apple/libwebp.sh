@@ -30,6 +30,13 @@ fi
   --disable-shared \
   --disable-dependency-tracking \
   --enable-libwebpmux \
+  --disable-libwebpdemux \
+  --disable-png \
+  --disable-jpeg \
+  --disable-tiff \
+  --disable-gif \
+  --disable-wic \
+  --enable-threading \
   ${ASM_OPTIONS} \
   --host="${HOST}" || return 1
 

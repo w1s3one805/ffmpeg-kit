@@ -510,6 +510,7 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --nm="${NM}" \
   --extra-ldflags="$(get_min_version_cflags)" \
   --disable-autodetect \
+  --disable-everything \
   --enable-cross-compile \
   --enable-pic \
   --enable-inline-asm \
@@ -547,8 +548,8 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --disable-nvenc \
   --disable-vaapi \
   --disable-vdpau \
-  --disable-everything \
   --enable-decoder=libvpx_vp9 \
+  --enable-demuxer=matroska \
   --enable-encoder=libwebp_anim \
   --enable-muxer=webp \
   --enable-protocol=file \
