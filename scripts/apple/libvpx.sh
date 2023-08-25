@@ -67,12 +67,12 @@ esac
   --enable-optimizations \
   --enable-better-hw-compatibility \
   ${ASM_OPTIONS} \
-  --disable-vp8 \
   --enable-vp9 \
   --enable-multithread \
   --enable-spatial-resampling \
   --enable-small \
   --enable-static \
+  --disable-vp8 \
   --disable-realtime-only \
   --disable-shared \
   --disable-debug \

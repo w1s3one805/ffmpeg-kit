@@ -158,10 +158,10 @@ get_size_optimization_cflags() {
   local ARCH_OPTIMIZATION=""
   case ${ARCH} in
   armv7 | armv7s | arm64 | arm64e | *-mac-catalyst)
-    ARCH_OPTIMIZATION="-Oz -Wno-ignored-optimization-argument"
+    ARCH_OPTIMIZATION="-Os -ffunction-sections -fdata-sections -Wno-ignored-optimization-argument"
     ;;
   i386 | x86-64 | arm64-simulator)
-    ARCH_OPTIMIZATION="-O2 -Wno-ignored-optimization-argument"
+    ARCH_OPTIMIZATION="-Os -ffunction-sections -fdata-sections -Wno-ignored-optimization-argument"
     ;;
   esac
 
@@ -174,10 +174,10 @@ get_size_optimization_asm_cflags() {
   jpeg | ffmpeg)
     case ${ARCH} in
     armv7 | armv7s | arm64 | arm64e | *-mac-catalyst)
-      ARCH_OPTIMIZATION="-Oz"
+      ARCH_OPTIMIZATION="-Os"
       ;;
     i386 | x86-64 | arm64-simulator)
-      ARCH_OPTIMIZATION="-O2"
+      ARCH_OPTIMIZATION="-Os"
       ;;
     esac
     ;;
@@ -273,7 +273,7 @@ get_asmflags() {
 get_cxxflags() {
   local COMMON_CFLAGS="$(get_common_cflags "$1") $(get_common_includes "$1") $(get_arch_specific_cflags) $(get_min_version_cflags "$1")"
   if [[ -z ${FFMPEG_KIT_DEBUG} ]]; then
-    local OPTIMIZATION_FLAGS="-Oz"
+    local OPTIMIZATION_FLAGS="-Os"
   else
     local OPTIMIZATION_FLAGS="${FFMPEG_KIT_DEBUG}"
   fi
@@ -328,20 +328,20 @@ get_size_optimization_ldflags() {
   armv7 | armv7s | arm64 | arm64e | *-mac-catalyst)
     case $1 in
     ffmpeg | ffmpeg-kit)
-      echo "-Oz -dead_strip"
+      echo "-Os -dead_strip"
       ;;
     *)
-      echo "-Oz -dead_strip"
+      echo "-Os -dead_strip"
       ;;
     esac
     ;;
   *)
     case $1 in
     ffmpeg)
-      echo "-O2"
+      echo "-Os -dead_strip"
       ;;
     *)
-      echo "-O2"
+      echo "-Os -dead_strip"
       ;;
     esac
     ;;

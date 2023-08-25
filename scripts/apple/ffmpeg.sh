@@ -537,11 +537,6 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --disable-schannel \
   --disable-securetransport \
   --disable-xlib \
-  --disable-cuda \
-  --disable-cuvid \
-  --disable-nvenc \
-  --disable-vaapi \
-  --disable-vdpau \
   --disable-alsa \
   --disable-cuda \
   --disable-cuvid \
@@ -554,6 +549,7 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --enable-muxer=webp \
   --enable-protocol=file \
   --enable-filter=scale,null,format \
+  --enable-lto \
   ${CONFIGURE_POSTFIX} 1>>"${BASEDIR}"/build.log 2>&1
 
 if [[ $? -ne 0 ]]; then
