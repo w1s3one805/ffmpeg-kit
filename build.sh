@@ -10,7 +10,7 @@
   --disable-x86-64 \
   --disable-x86-64-mac-catalyst \
   --enable-libvpx \
-  --enable-libvorbis \
+  --enable-opus \
   --enable-ios-audiotoolbox \
   --enable-ios-zlib \
   --enable-ios-bzip2 \

@@ -543,7 +543,7 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --disable-nvenc \
   --disable-vaapi \
   --disable-vdpau \
-  --enable-decoder=libvpx_vp9,libvorbis \
+  --enable-decoder=libvpx_vp9,opus \
   --enable-demuxer=matroska \
   --enable-encoder=libwebp_anim,aac_at \
   --enable-muxer=webp \
