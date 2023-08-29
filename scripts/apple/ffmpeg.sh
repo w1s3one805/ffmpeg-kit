@@ -548,7 +548,7 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --enable-encoder=libwebp_anim,aac_at \
   --enable-muxer=webp,adts \
   --enable-protocol=file \
-  --enable-filter=scale,null,format \
+  --enable-filter=scale,null,format,anull,network \
   --enable-lto \
   ${CONFIGURE_POSTFIX} 1>>"${BASEDIR}"/build.log 2>&1
 
