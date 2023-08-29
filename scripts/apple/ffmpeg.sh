@@ -544,9 +544,9 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --disable-vaapi \
   --disable-vdpau \
   --enable-decoder=libvpx_vp9,opus \
-  --enable-demuxer=matroska \
+  --enable-demuxer=matroska,ogg \
   --enable-encoder=libwebp_anim,aac_at \
-  --enable-muxer=webp \
+  --enable-muxer=webp,adts \
   --enable-protocol=file \
   --enable-filter=scale,null,format \
   --enable-lto \
