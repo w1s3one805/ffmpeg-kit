@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ./ios.sh -s -x \
-  --target=15.0 \
+  --target=16.0 \
   --disable-armv7 \
   --disable-armv7s \
   --disable-arm64-mac-catalyst \
