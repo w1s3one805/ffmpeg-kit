@@ -1457,7 +1457,6 @@ check_if_dependency_rebuilt() {
   case $1 in
   cpu-features)
     set_dependency_rebuilt_flag "libvpx"
-    set_dependency_rebuilt_flag "libwebp"
     set_dependency_rebuilt_flag "openh264"
     ;;
   expat)

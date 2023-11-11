@@ -9,10 +9,10 @@
   --disable-i386 \
   --disable-x86-64 \
   --disable-x86-64-mac-catalyst \
-  --enable-libvpx \
-  --enable-libwebp \
   --enable-opus \
   --enable-ios-audiotoolbox \
+  --enable-ios-videotoolbox \
+  --enable-ios-avfoundation \
   --enable-ios-zlib \
   --enable-ios-bzip2 \
   --enable-ios-libiconv \
