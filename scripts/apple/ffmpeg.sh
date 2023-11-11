@@ -455,7 +455,7 @@ COMMON_LDFLAGS=$(get_common_ldflags)
 # UPDATE BUILD FLAGS
 export CFLAGS="${ARCH_CFLAGS} ${APP_CFLAGS} ${COMMON_CFLAGS} ${OPTIMIZATION_CFLAGS} ${MIN_VERSION_CFLAGS}${FFMPEG_CFLAGS} ${COMMON_INCLUDES}"
 export CXXFLAGS=$(get_cxxflags "${LIB_NAME}")
-export LDFLAGS="${ARCH_LDFLAGS}${HIGH_PRIORITY_LDFLAGS}${FFMPEG_LDFLAGS} ${LINKED_LIBRARIES} ${COMMON_LDFLAGS} ${BITCODE_FLAGS} ${OPTIMIZATION_FLAGS}"
+export LDFLAGS="${ARCH_LDFLAGS}${HIGH_PRIORITY_LDFLAGS}${FFMPEG_LDFLAGS} ${LINKED_LIBRARIES} ${COMMON_LDFLAGS} -Wl,-ld_classic ${BITCODE_FLAGS} ${OPTIMIZATION_FLAGS}"
 
 echo -n -e "\n${LIB_NAME}: "
 
@@ -542,6 +542,9 @@ ${SED_INLINE} 's/static int av_log_level/__thread int av_log_level/g' "${BASEDIR
   --disable-nvenc \
   --disable-vaapi \
   --disable-vdpau \
+  --enable-avfoundation \
+  --enable-audiotoolbox \
+  --enable-videotoolbox \
   --enable-decoder=libvpx_vp9,opus \
   --enable-demuxer=matroska,ogg \
   --enable-encoder=hevc_videotoolbox,aac_at \
