@@ -10,6 +10,7 @@
   --disable-x86-64 \
   --disable-x86-64-mac-catalyst \
   --enable-opus \
+  --enable-libvpx \
   --enable-ios-audiotoolbox \
   --enable-ios-videotoolbox \
   --enable-ios-avfoundation \
