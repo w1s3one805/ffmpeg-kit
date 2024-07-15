@@ -79,9 +79,6 @@ get_common_cflags() {
   fi
 
   local BUILD_DATE="-DFFMPEG_KIT_BUILD_DATE=$(date +%Y%m%d 2>>"${BASEDIR}"/build.log)"
-  if [ -z $NO_BITCODE ]; then
-    local BITCODE_FLAGS="-fembed-bitcode"
-  fi
 
   case ${ARCH} in
   arm64)
@@ -260,9 +257,6 @@ get_cxxflags() {
   local BITCODE_FLAGS=""
   case ${ARCH} in
   arm64)
-    if [ -z $NO_BITCODE ]; then
-      local BITCODE_FLAGS="-fembed-bitcode"
-    fi
     ;;
   esac
 
@@ -331,9 +325,6 @@ get_size_optimization_ldflags() {
 }
 
 get_arch_specific_ldflags() {
-  if [ -z $NO_BITCODE ]; then
-    local BITCODE_FLAGS="-fembed-bitcode"
-  fi
 
   case ${ARCH} in
   arm64)
@@ -357,9 +348,6 @@ get_ldflags() {
     local OPTIMIZATION_FLAGS="${FFMPEG_KIT_DEBUG}"
   fi
   local COMMON_FLAGS=$(get_common_ldflags)
-  if [ -z $NO_BITCODE ]; then
-    local BITCODE_FLAGS="-fembed-bitcode -Wc,-fembed-bitcode"
-  fi
 
   case $1 in
   ffmpeg-kit)
