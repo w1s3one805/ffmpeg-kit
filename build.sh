@@ -26,14 +26,19 @@ VISIONOS_PLATFORM=xros
 VISIONOS_MINOS=1.0
 VISIONOS_SDK=1.0
 
-IOS_PATH=prebuilt/bundle-apple-framework-iphoneos
-IOSSIM_PATH=prebuilt/bundle-apple-framework-iphonesimulator
+IOS_SIM_PLATFORM=iossim
+IOS_SIM_MINOS=16.0
+IOS_SIM_SDK=16.0
+
+IOS_PATH=prebuilt/bundle-apple-framework-ios
+IOS_SIM_PATH=prebuilt/bundle-apple-framework-iphonesimulator
 VISIONOS_PATH=prebuilt/bundle-apple-framework-visionos
 VISIONOSSIM_PATH=prebuilt/bundle-apple-framework-visionsimulator
 
-rm -rf ${VISIONOS_PATH} ${VISIONOSSIM_PATH}
+rm -rf ${VISIONOS_PATH} ${VISIONOSSIM_PATH} ${IOS_SIM_PATH}
 cp -r ${IOS_PATH} ${VISIONOS_PATH}
 cp -r ${IOS_PATH} ${VISIONOSSIM_PATH}
+cp -r ${IOS_PATH} ${IOS_SIM_PATH}
 
 for FRAMEWORK in "${FRAMEWORK_NAMES[@]}"; do
   echo Processing $FRAMEWORK.framework
@@ -48,6 +53,11 @@ for FRAMEWORK in "${FRAMEWORK_NAMES[@]}"; do
     -replace \
     -output ${VISIONOSSIM_PATH}/${FRAMEWORK}.framework/${FRAMEWORK} \
     ${IOS_PATH}/${FRAMEWORK}.framework/${FRAMEWORK}
+  vtool \
+    -set-build-version ${IOS_SIM_PLATFORM} ${IOS_SIM_MINOS} ${IOS_SIM_SDK} \
+    -replace \
+    -output ${IOS_SIM_PATH}/${FRAMEWORK}.framework/${FRAMEWORK} \
+    ${IOS_PATH}/${FRAMEWORK}.framework/${FRAMEWORK}
 done
 
 rm -rf prebuilt/patched-xcframeworks
@@ -57,7 +67,7 @@ LIST=()
 for FRAMEWORK in "${FRAMEWORK_NAMES[@]}"; do
   xcodebuild -create-xcframework \
     -framework ${IOS_PATH}/${FRAMEWORK}.framework \
-    -framework ${IOSSIM_PATH}/${FRAMEWORK}.framework \
+    -framework ${IOS_SIM_PATH}/${FRAMEWORK}.framework \
     -framework ${VISIONOS_PATH}/${FRAMEWORK}.framework \
     -framework ${VISIONOSSIM_PATH}/${FRAMEWORK}.framework \
     -output prebuilt/patched-xcframeworks/${FRAMEWORK}.xcframework
